@@ -3,7 +3,7 @@
 		max-width: $base_width;
 		padding-top: 80px;
 		padding-bottom: 80px;
-		@media screen and (max-width: 520px) {
+		@media screen and (max-width: 800px) {
 			padding-top: 8vh;
 			padding-bottom: 8vh;
 		}
@@ -16,7 +16,7 @@
 		font-weight: bold;
 		color: $base_color;
 		font-family: $font_en;
-		@media screen and (max-width: 520px) {
+		@media screen and (max-width: 800px) {
 			font-size: 2.8rem;
 			margin-bottom: 40px;
 		}
@@ -27,7 +27,7 @@
 			height: 3px;
 			background: $base_color;
 			display: block;
-			@media screen and (max-width: 520px) {
+			@media screen and (max-width: 800px) {
 				height: 1.7px;
 			}
 		}

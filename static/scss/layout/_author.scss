@@ -7,7 +7,7 @@
 	background-size: cover;
 	background-color: $base_color;
 	background-image: url(/media/bg_parallax.webp);
-	@media screen and (max-width: 520px) {
+	@media screen and (max-width: 800px) {
 		min-height: 300px;
 	}
 	&__container {
@@ -25,7 +25,7 @@
 		text-align: right;
 		display: flex;
 		align-items: center;
-		@media screen and (max-width: 520px) {
+		@media screen and (max-width: 800px) {
 			font-size: 2.8rem;
 			margin-bottom: 40px;
 		}
@@ -36,7 +36,7 @@
 			height: 3px;
 			background: $gray2;
 			display: block;
-			@media screen and (max-width: 520px) {
+			@media screen and (max-width: 800px) {
 				height: 1.7px;
 			}
 		}
@@ -44,14 +44,14 @@
 	&__inner {
 		display: flex;
 		align-items: center;
-		@media screen and (max-width: 520px) {
+		@media screen and (max-width: 800px) {
 			flex-direction: column;
 		}
 	}
 	&__profile {
 		text-align: center;
 		margin-left: 5%;
-		@media screen and (max-width: 520px) {
+		@media screen and (max-width: 800px) {
 			margin-bottom: 40px;
 			margin-left: 0;
 		}
@@ -76,7 +76,7 @@
 		font-family: $font_normal;
 		background: rgba(38,39,43,.6);
 		padding: 30px 5%;
-		@media screen and (max-width: 520px) {
+		@media screen and (max-width: 800px) {
 			margin-left: 0%;
 		}
 	}

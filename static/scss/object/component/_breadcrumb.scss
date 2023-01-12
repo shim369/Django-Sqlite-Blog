@@ -3,14 +3,14 @@
 	list-style: none;
 	overflow: hidden;
 	margin-bottom: 30px;
-	@media screen and (max-width: 520px) {
+	@media screen and (max-width: 800px) {
 		margin-bottom: 0;
 	}
 	&__item {
 		display: inline;
 		list-style: none;
 		font-family: $font_en;
-		@media screen and (max-width: 520px) {
+		@media screen and (max-width: 800px) {
 			margin-bottom: 15px;
 		}
 		&::after {
@@ -33,7 +33,7 @@
 			color: $base_color;
 			word-break: break-all;
 			font-size: 1rem;
-			@media screen and (max-width: 520px) {
+			@media screen and (max-width: 800px) {
 				padding: 10px 0;
 				display: inline-block;
 				border-radius: 5px;

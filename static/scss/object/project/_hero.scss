@@ -3,7 +3,7 @@
 	position: relative;
 	z-index: 1;
 	height: 600px;
-	@media screen and (max-width: 520px) {
+	@media screen and (max-width: 800px) {
 		height: 240px;
 		min-height: calc(240px);
 	}
@@ -19,7 +19,7 @@
 		position: relative;
 		z-index: 1;
 		padding-top: 40px;
-		@media screen and (max-width: 520px) {
+		@media screen and (max-width: 800px) {
 			padding-top: 10px;
 		}
 		&::after {
@@ -38,7 +38,7 @@
 			@media screen and (max-width: 800px) {
 				width: 100%;
 			}
-			@media screen and (max-width: 520px) {
+			@media screen and (max-width: 800px) {
 				top: 30px;
 				background-position: 0 0, 20px 20px;
 				background-size: 40px 40px;
@@ -59,7 +59,7 @@
 		@media screen and (max-width: 800px) {
 			width: 100%;
 		}
-		@media screen and (max-width: 520px) {
+		@media screen and (max-width: 800px) {
 			height: 220px;
 			min-height: 220px;
 		}
@@ -115,7 +115,7 @@
 		@media screen and (max-width: 800px) {
 			top: 50%;
 		}
-		@media screen and (max-width: 520px) {
+		@media screen and (max-width: 800px) {
 			top: 40%;
 		}
 	}
