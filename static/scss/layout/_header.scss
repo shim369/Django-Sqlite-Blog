@@ -99,8 +99,12 @@
 		line-height: 1;
 		display: flex;
 		align-items: center;
-		font-family: $font_en;
+		font-family: $font_en2;
 		transition: all .8s ease;
+		text-transform: uppercase;
+		&:hover {
+			opacity: 0.8;
+		}
 		@media screen and (max-width: 800px) {
 			margin: 0;
 		}

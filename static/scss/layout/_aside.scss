@@ -11,7 +11,8 @@
 		color: $base_color;
 		text-align: center;
 		margin-bottom: 25px;
-		font-family: $font_en;
+		font-family: $font_en2;
+		text-transform: uppercase;
 		font-size: 1.8rem;
 	}
 	&__wn-list {
@@ -88,10 +89,12 @@
 			width: 100%;
 			display: block;
 			text-align: center;
-			font-family: $font_en;
+			font-family: $font_en2;
+			text-transform: uppercase;
 			transition: all .8s ease;
+			box-shadow: rgb(50 50 93 / 10%) 0px 13px 27px -5px, rgb(0 0 0 / 10%) 0px 8px 16px -8px;
 			&:hover {
-				opacity: .8;
+				box-shadow: none;
 			}
 		}
 	}
@@ -108,11 +111,13 @@
 			background: $base_color;
 			display: block;
 			text-align: center;
-			font-family: $font_en;
 			transition: all .8s ease;
 			border-radius: 25px;
+			font-family: $font_en2;
+			text-transform: uppercase;
+			box-shadow: rgb(50 50 93 / 10%) 0px 13px 27px -5px, rgb(0 0 0 / 10%) 0px 8px 16px -8px;
 			&:hover {
-				opacity: .8;
+				box-shadow: none;
 			}
 		}
 	}

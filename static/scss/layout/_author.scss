@@ -62,10 +62,11 @@
 	&__name {
 		font-size: 1rem;
 		color: $gray2;
-		font-family: $font_en;
 		padding: 5px 0 0;
 		a {
 			color: $gray2;
+			font-family: $font_en2;
+			text-transform: capitalize;
 		}
 	}
 	&__intro {

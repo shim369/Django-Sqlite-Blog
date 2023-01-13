@@ -9,7 +9,8 @@
 	&__item {
 		display: inline;
 		list-style: none;
-		font-family: $font_en;
+		font-family: $font_en2;
+		text-transform: uppercase;
 		@media screen and (max-width: 800px) {
 			margin-bottom: 15px;
 		}
@@ -28,7 +29,8 @@
 			content: '';
 		}
 		a {
-			font-family: $font_en;
+			font-family: $font_en2;
+			text-transform: uppercase;
 			text-decoration: none;
 			color: $base_color;
 			word-break: break-all;

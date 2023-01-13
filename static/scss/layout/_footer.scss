@@ -7,7 +7,8 @@
 		text-align: center;
 		color: $gray2;
 		background: $base_color;
-		font-family: $font_en;
+		font-family: $font_en2;
+		text-transform: uppercase;
 	}
 }
 
@@ -39,12 +40,6 @@
 		}
 		i {
 			color: #fff;
-		}
-		span {
-			font-size: .8rem;
-			padding-top: 2px;
-			color: #fff;
-			font-family: $font_en;
 		}
 	}
 	&.left-move {

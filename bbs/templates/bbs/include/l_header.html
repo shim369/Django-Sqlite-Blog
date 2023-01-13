@@ -8,7 +8,7 @@
 			</p>
 			<nav class="l-header__nav">
 				<ul class="l-header__list">
-					{% if articles or article %}{% for category in category_list %}<li class="l-header__item"><a class="l-header__link" href="{% url 'bbs:category' category %}"><span>{{ category.name }}</span></a></li>{% endfor %}{% endif %}
+					{% if articles or article %}{% for category in category_list %}<li class="l-header__item"><a class="l-header__link" href="{% url 'bbs:category' category %}">{{ category.name }}</a></li>{% endfor %}{% endif %}
 				</ul>
 			</nav>
 		</div>

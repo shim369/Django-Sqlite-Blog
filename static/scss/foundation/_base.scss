@@ -4,6 +4,11 @@
 	src: url('/static/fonts/MontserratSubrayada-Bold.ttf') format('truetype');
 }
 @font-face {
+	font-family: 'ArchivoBlack-Regular';
+	font-display: swap;
+	src: url('/static/fonts/ArchivoBlack-Regular.ttf') format('truetype');
+}
+@font-face {
 	font-family: 'icomoon';
 	font-display: swap;
 	src: url('/static/fonts/icomoon.eot?8peh2k');
@@ -67,6 +72,7 @@ $gray1: #c1c1c4;
 $gray2: #dadada;
 $font_normal: YuGothic,Arial,Meiryo,sans-serif;
 $font_en: "MontserratSubrayada-Bold",Meiryo,sans-serif;
+$font_en2: "ArchivoBlack-Regular",Meiryo,sans-serif;
 
 .en {
 	font-family: $font_en;
