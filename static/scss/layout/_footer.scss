@@ -7,7 +7,7 @@
 		text-align: center;
 		color: $gray2;
 		background: $base_color;
-		font-family: $font_en2;
+		font-family: $font_en;
 		text-transform: uppercase;
 	}
 }
@@ -21,6 +21,9 @@
 	transform: translateX(80px);
 	@media screen and (max-width: 800px) {
 		position: absolute;
+		animation: none !important;
+		opacity: 1;
+		transform: inherit;
 	}
 	a {
 		display: flex;

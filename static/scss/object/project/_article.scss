@@ -19,7 +19,7 @@
 			padding: 10px 20px;
 			font-size: 20px;
 			background: $base_color;
-			font-family: $font_en2;
+			font-family: $font_en;
 			text-transform: uppercase;
 			@media screen and (max-width: 800px) {
 				font-size: 15px;
@@ -34,7 +34,6 @@
 		position: relative;
 		overflow: hidden;
 		z-index: 1;
-		font-family: $font_en2;
 		@media screen and (max-width: 800px) {
 			font-size: 1.2rem;
 			margin-top: 35px;
