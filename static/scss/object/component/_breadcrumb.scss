@@ -9,7 +9,8 @@
 	&__item {
 		display: inline;
 		list-style: none;
-		font-family: $font_en;
+		font-family: $font_normal;
+		font-weight: bold;
 		text-transform: uppercase;
 		@media screen and (max-width: 800px) {
 			margin-bottom: 15px;
@@ -29,12 +30,13 @@
 			content: '';
 		}
 		a {
-			font-family: $font_en;
+			font-family: $font_normal;
 			text-transform: uppercase;
 			text-decoration: none;
 			color: $base_color;
 			word-break: break-all;
 			font-size: 1rem;
+			font-weight: bold;
 			@media screen and (max-width: 800px) {
 				padding: 10px 0;
 				display: inline-block;
