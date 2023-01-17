@@ -16,6 +16,10 @@
 		margin-right: auto;
 		padding-left: 2%;
 		padding-right: 2%;
+		@media screen and (max-width: 800px) {
+			padding-right: 4%;
+			padding-left: 4%;
+		}
 	}
 	&__title {
 		font-family: $font_en;

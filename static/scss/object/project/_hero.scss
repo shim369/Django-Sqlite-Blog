@@ -17,7 +17,10 @@
 		margin-left: auto;
 		margin-right: auto;
 		padding-left: 2%;
-		padding-right: 2%;
+		padding-right: 4%;
+		@media screen and (max-width: 800px) {
+			padding-left: 4%;
+		}
 	}
 	&__slide-wrap {
 		position: relative;
@@ -123,6 +126,7 @@
 		}
 		@media screen and (max-width: 800px) {
 			top: 60%;
+			left: 4%;
 		}
 		@media screen and (max-width: 520px) {
 			top: 40%;

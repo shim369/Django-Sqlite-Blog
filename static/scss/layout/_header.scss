@@ -6,6 +6,12 @@
 	width: 100%;
 	background: $base_color;
 	padding: 25px 0;
+	@media screen and (max-width: 800px) {
+		padding: 20px 0;
+	}
+	@media screen and (max-width: 800px) {
+		position: relative;
+	}
 	&__container {
 		max-width: 1400px;
 		margin-left: auto;
@@ -15,12 +21,10 @@
 		align-items: center;
 		padding-left: 2%;
 		padding-right: 2%;
-	}
-	@media screen and (max-width: 800px) {
-		padding: 20px 0;
-	}
-	@media screen and (max-width: 800px) {
-		position: relative;
+		@media screen and (max-width: 800px) {
+			padding-right: 4%;
+			padding-left: 4%;
+		}
 	}
 	&__left {
 		display: flex;
