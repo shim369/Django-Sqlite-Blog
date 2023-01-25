@@ -53,7 +53,7 @@ gtag('config', 'G-C4QW4L4G4R');
 <main class="l-main">
     <div class="l-contents">
       <div class="l-container">
-        <p class="l-contents__title">BLOG</p>
+        <p class="l-contents__title">{% if category %}{{ category.name }}{% endif %}{% if tag %}{{ tag.name }}{% endif %}</p>
         <div class="l-container__inner">
         <article class="l-article u-bg-none">
 			{% include './include/c_card.html' %}
@@ -88,24 +88,6 @@ gtag('config', 'G-C4QW4L4G4R');
 {% include './include/l_footer.html' %}
 </div>
 <script defer src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-<script>
-window.addEventListener('load', () => {
-let windowWidth = window.innerWidth;
-let breakPoint = 520;
-let isSpSize = (windowWidth > breakPoint);
-if(isSpSize){
-	$(function(){
-		let h = 0;
-		$(".c-card__title").each(function(){
-			if($(this).height() > h) {
-				h = $(this).height();
-			}
-		});
-		$(".c-card__title").css("height", h + "px");
-	});
-}
-}, false);
-</script>
 <script defer src="/static/js/main.js?{% now 'U' %}"></script>
 <script type="application/ld+json">[{"@context": "https://schema.org","@type": "SiteNavigationElement","hasPart": [{"@type": "WebPage","name": "HOME","url": "https://sohtani.pythonanywhere.com/"},{"@type": "CollectionPage","name": "PYTHON","url": "https://sohtani.pythonanywhere.com/category/python/"},{"@type": "CollectionPage","name": "TOOL","url": "https://sohtani.pythonanywhere.com/category/tool/"},{"@type": "WebPage","name": "FITNESS","url": "https://sohtani.pythonanywhere.com/fitness/"},{"@type": "ContactPage","name": "CONTACT","url": "https://sohtani.pythonanywhere.com/contact/"},{"@type": "WebPage","name": "GitHub","url": "https://github.com/shim369"}]}]</script>
 </body>

@@ -1,21 +1,23 @@
 .c-cards {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: flex-start;
 	.c-card {
-		width: calc((100% - 4%)/3);
+		width: calc((100% - 6%)/3);
 		background: #d1d1d17d;
 		position: relative;
 		word-break: break-all;
 		transition: all .8s ease;
 		box-shadow: rgb(50 50 93 / 10%) 0px 13px 27px -5px, rgb(0 0 0 / 10%) 0px 8px 16px -8px;
 		cursor: pointer;
+		margin-right: 2%;
 		margin-bottom: 30px;
 		@media screen and (max-width: 1300px) {
 			width: 48%;
 		}
 		@media screen and (max-width: 520px) {
 			width: 100%;
+			margin-right: 0;
 		}
 		&:hover {
 			box-shadow: none;
