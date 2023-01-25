@@ -32,24 +32,24 @@
 <body id="top">
 <div class="l-wrapper">
 {% include './include/l_header.html' %}
-<section class="p-hero">
-	<div class="p-hero__container">
-		<div class="p-hero__catch">
-		<h1 class="p-hero__h1"><img src="/media/h1.svg" width="798" height="156" alt="WEB DEVELOPMENT AND LIFE BLOG"></h1>
-		<p class="p-hero__text">This is a blog where I output web technologies and tools I have learned in my daily life.<br>It is only a small amount of notes, so you will only get a hint or two,<br>but I hope you will visit here from time to time. Thank you from Japan.</p>
-		</div>
-		<div class="p-hero__slide-wrap">
-			<div class="p-hero__slide-box">
-				<picture class="p-hero__picture current">
-					<source srcset="/media/device.webp" type="image/webp">
-					<img src="/media/device.png" alt="TECH BLOG slide1" width="652" height="478">
-				</picture>
+<main class="l-main">
+	<section class="p-hero">
+		<div class="p-hero__container">
+			<div class="p-hero__catch">
+			<h1 class="p-hero__h1"><img src="/media/h1.svg" width="798" height="156" alt="WEB DEVELOPMENT AND LIFE BLOG"></h1>
+			<p class="p-hero__text">This is a blog where I output web technologies and tools I have learned in my daily life.<br>It is only a small amount of notes, so you will only get a hint or two,<br>but I hope you will visit here from time to time. Thank you from Japan.</p>
+			</div>
+			<div class="p-hero__slide-wrap">
+				<div class="p-hero__slide-box">
+					<picture class="p-hero__picture current">
+						<source srcset="/media/device.webp" type="image/webp">
+						<img src="/media/device.png" alt="TECH BLOG slide1" width="652" height="478">
+					</picture>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="p-hero__slider"></div>
-</section>
-<main class="l-main">
+		<div class="p-hero__slider"></div>
+	</section>
 	<div class="l-contents">
 		<div class="l-container">
 		<p class="l-contents__title">BLOG</p>
@@ -62,7 +62,7 @@
 		</div>
 		<ol class="c-breadcrumbs">
 			<li class="c-breadcrumbs__item">
-			<a href="{% url 'blog:index' %}">
+			<a href="{% url 'bbs:index' %}">
 				<i class="icon-home3"></i>HOME
 			</a>
 			</li>
@@ -76,16 +76,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
 <script>
 window.addEventListener('load', () => {
-const header = document.querySelector(".l-header");
+// const header = document.querySelector(".l-header");
 const slider = document.querySelector(".p-hero__slider");
 const slideWrap = document.querySelector(".p-hero__slide-wrap");
 const headerLeft = document.querySelector(".l-header__left");
 const headerIcons = document.querySelector(".l-header__icons");
 const heroCatch = document.querySelector(".p-hero__catch");
 const tl = gsap.timeline();
-tl.fromTo(header, 1.5, { x: "-100%" }, { x: "0%", ease: Power2.easeInOut })
-.fromTo(slider, 1.5, { x: "-100%" }, { x: "0%", ease: Power2.easeInOut },"-=1.5")
-.fromTo(slideWrap, 1.2, { opacity: 0, y: 100 }, { opacity: 1, y: 0, ease: Power2.easeInOut })
+tl.fromTo(slideWrap, 1.2, { opacity: 0, y: 100 }, { opacity: 1, y: 0, ease: Power2.easeInOut })
 .fromTo(headerLeft, 1.2, { opacity: 0, x: 30 },{ opacity: 1, x: 0, ease: Power2.easeInOut },"-=1.2")
 .fromTo(headerIcons, 1.2, { opacity: 0, x: -30 },{ opacity: 1, x: 0, ease: Power2.easeInOut },"-=1.2")
 .fromTo(heroCatch, .6, { opacity: 0 },{ opacity: 1 });
