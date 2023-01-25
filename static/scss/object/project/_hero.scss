@@ -1,8 +1,16 @@
 .p-hero {
-	background: #161719;
 	position: relative;
 	z-index: 1;
 	height: 600px;
+	&__slider {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #161719;
+		z-index: -1;
+	}
 	@media screen and (max-width: 800px) {
 		height: 480px;
 		min-height: 480px;
