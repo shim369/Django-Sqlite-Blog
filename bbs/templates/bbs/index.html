@@ -75,8 +75,6 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
 <script>
-window.addEventListener('load', () => {
-// const header = document.querySelector(".l-header");
 const slider = document.querySelector(".p-hero__slider");
 const slideWrap = document.querySelector(".p-hero__slide-wrap");
 const headerLeft = document.querySelector(".l-header__left");
@@ -87,7 +85,6 @@ tl.fromTo(slideWrap, 1.2, { opacity: 0, y: 100 }, { opacity: 1, y: 0, ease: Powe
 .fromTo(headerLeft, 1.2, { opacity: 0, x: 30 },{ opacity: 1, x: 0, ease: Power2.easeInOut },"-=1.2")
 .fromTo(headerIcons, 1.2, { opacity: 0, x: -30 },{ opacity: 1, x: 0, ease: Power2.easeInOut },"-=1.2")
 .fromTo(heroCatch, .6, { opacity: 0 },{ opacity: 1 });
-}, false);
 </script>
 <script>
 if ('serviceWorker' in navigator) {
