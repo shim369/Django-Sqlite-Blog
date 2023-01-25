@@ -1,16 +1,9 @@
 .l-header {
-	// position: fixed;
-	// top: 0;
-	// left: 0;
-	// z-index: 100;
 	width: 100%;
 	background: $base_color;
 	padding: 25px 0;
 	@media screen and (max-width: 800px) {
 		padding: 20px 0;
-	}
-	@media screen and (max-width: 800px) {
-		// position: relative;
 	}
 	&__container {
 		max-width: 1400px;
