@@ -28,6 +28,30 @@
 <link rel="apple-touch-icon" href="/media/icon-s.png">
 <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
 <link rel="manifest" href="/static/json/manifest.json">
+<style>
+	.slide-items {
+  list-style: none;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.slide-items img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  transition: 4s linear transform .4s;
+  object-fit: cover;
+}
+
+.slide-items .zoom {
+  transform: scale(1.05);
+}
+</style>
 </head>
 <body id="top">
 <div class="l-wrapper">
@@ -41,10 +65,26 @@
 			</div>
 			<div class="p-hero__slide-wrap">
 				<div class="p-hero__slide-box">
-					<picture class="p-hero__picture current">
-						<source srcset="/media/device.webp" type="image/webp">
-						<img src="/media/device.png" alt="TECH BLOG slide1" width="652" height="478">
-					</picture>
+					<ul class="p-hero__slideshow">
+						<li>
+							<picture class="p-hero__picture current">
+								<source srcset="/media/phone.webp" type="image/webp">
+								<img src="/media/phone.png" alt="TECH BLOG phone" width="498" height="474">
+							</picture>
+						</li>
+						<li>
+							<picture class="p-hero__picture current">
+								<source srcset="/media/tablet.webp" type="image/webp">
+								<img src="/media/tablet.png" alt="TECH BLOG tablet" width="498" height="474">
+							</picture>
+						</li>
+						<li>
+							<picture class="p-hero__picture current">
+								<source srcset="/media/desktop.webp" type="image/webp">
+								<img src="/media/desktop.png" alt="TECH BLOG desktop" width="498" height="474">
+							</picture>
+						</li>
+					  </ul>
 				</div>
 			</div>
 		</div>
@@ -78,8 +118,8 @@
 const slideWrap = document.querySelector(".p-hero__slide-wrap");
 const heroCatch = document.querySelector(".p-hero__catch");
 const tl = gsap.timeline();
-tl.fromTo(slideWrap, 1.2, { opacity: 0, y: 100 }, { opacity: 1, y: 0, ease: Power2.easeInOut })
-.fromTo(heroCatch, .5, { opacity: 0, y: -80 },{ opacity: 1, y: 0, ease: Power2.easeInOut });
+tl.fromTo(slideWrap, 1.6, { opacity: 0, y: 100 }, { opacity: 1, y: 0, ease: Power2.easeInOut })
+.fromTo(heroCatch, .8, { opacity: 0, y: -50 },{ opacity: 1, y: 0, ease: Power2.easeInOut });
 </script>
 <script>
 if ('serviceWorker' in navigator) {

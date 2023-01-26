@@ -38,3 +38,15 @@ $('#page-top').click(()=>{
 	}, 500);
 	return false;
 });
+
+$(function(){
+	$(".p-hero__slideshow li").css({"position":"relative","overflow":"hidden"});
+	$(".p-hero__slideshow li").hide().css({"position":"absolute","top":0,"left":0});
+	$(".p-hero__slideshow li:first").addClass("fade").show();
+	setInterval(function(){
+	  let $active = $(".p-hero__slideshow li.fade");
+	  let $next = $active.next("li").length?$active.next("li"):$(".p-hero__slideshow li:first");
+	  $active.fadeOut(3000).removeClass("fade");
+	  $next.fadeIn(3000).addClass("fade");
+	},4000);
+  });
