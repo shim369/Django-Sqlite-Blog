@@ -30,7 +30,7 @@ if ('serviceWorker' in navigator) {
 		<div class="l-container">
 		  <p class="l-contents__title">CONTACT</p>
 		  <div class="l-container__inner">
-			<article class="l-article">
+			<article class="l-article l-contact">
 				<div class="p-contact">
 				<form class="p-contact__form" action="{% url 'bbs:contact_form' %}" method="post">
 				{% csrf_token %}
