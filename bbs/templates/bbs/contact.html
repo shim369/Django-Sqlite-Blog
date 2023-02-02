@@ -30,7 +30,7 @@ if ('serviceWorker' in navigator) {
 		<div class="l-container">
 		  <p class="l-contents__title">CONTACT</p>
 		  <div class="l-container__inner">
-			<article class="l-article l-contact">
+			<article class="l-article__contact">
 				<div class="p-contact">
 				<form class="p-contact__form" action="{% url 'bbs:contact_form' %}" method="post">
 				{% csrf_token %}
@@ -39,8 +39,10 @@ if ('serviceWorker' in navigator) {
 				{{ form.message }}
 				{{ form.myself }}
 				<label for="box">Receive the same</label>
-				<h1 class="p-contact__h1">Depending on the content, I may not be able to reply.<br>Also, replies may be delayed. I apologize in advance. I'm sorry.</h1>
-				<h2 class="p-contact__h2">Did you check before sending?</h2>
+				<div class="p-contact__text">
+					<h1 class="p-contact__h1">Depending on the content, I may not be able to reply.<br>Also, replies may be delayed. I apologize in advance. I'm sorry.</h1>
+					<h2 class="p-contact__h2">Did you check before sending?</h2>
+				</div>
 				<button id="submit" class="c-button__submit" type="submit">SEND</button>
 				</form>
 				</div>
