@@ -1,10 +1,10 @@
 .p-hero {
 	position: relative;
-	z-index: 1;
 	height: 600px;
 	background-image: url(/media/hero-bg.webp);
 	background-position: center;
 	background-color: $base_color;
+	background-size: cover;
 	@media screen and (max-width: 1300px) {
 		height: 550px;
 	}
@@ -15,14 +15,6 @@
 	@media screen and (max-width: 520px) {
 		height: 260px;
 		min-height: 260px;
-	}
-	&__slider {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		z-index: -1;
 	}
 	&__container {
 		max-width: $base_width;
@@ -59,19 +51,23 @@
 		position: relative;
 		width: 498px;
 		height: 474px;
-		
+		top: 50px;
 		@media screen and (max-width: 1300px) {
 			height: 450px;
+			top: 15px;
 		}
 		@media screen and (max-width: 800px) {
 			width: 350px;
 			height: 310px;
+			top: 30px;
 		}
 		@media screen and (max-width: 520px) {
 			height: 240px;
+			top: 25px;
 		}
 		@media screen and (max-width: 400px) {
 			height: 200px;
+			top: 25px;
 		}
 		li{
 			list-style: none;

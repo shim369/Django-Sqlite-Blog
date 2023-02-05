@@ -64,7 +64,6 @@
 				</div>
 			</div>
 		</div>
-		<div class="p-hero__slider"></div>
 	</section>
 	<div class="l-contents">
 		<div class="l-container">
@@ -94,8 +93,9 @@
 const slideWrap = document.querySelector(".p-hero__slide-wrap");
 const heroCatch = document.querySelector(".p-hero__catch");
 const tl = gsap.timeline();
-tl.fromTo(slideWrap, 1.6, { opacity: 0, y: 100 }, { opacity: 1, y: 0, ease: Power2.easeInOut })
-.fromTo(heroCatch, .8, { opacity: 0, y: -50 },{ opacity: 1, y: 0, ease: Power2.easeInOut });
+tl
+.fromTo(slideWrap, 2, { opacity: 0 }, { opacity: 1, ease: Power2.easeInOut })
+.fromTo(heroCatch, .8, { opacity: 0, y: -50 },{ opacity: 1, y: 0, ease: Power2.easeInOut },2);
 </script>
 <script>
 if ('serviceWorker' in navigator) {
