@@ -38,14 +38,3 @@ $('#page-top').click(()=>{
 	}, 500);
 	return false;
 });
-
-$(function(){
-	$(".p-hero__slideshow li").hide();
-	$(".p-hero__slideshow li:first").addClass("fade").show();
-	setInterval(function(){
-	  let $active = $(".p-hero__slideshow li.fade");
-	  let $next = $active.next("li").length?$active.next("li"):$(".p-hero__slideshow li:first");
-	  $active.fadeOut(4000).removeClass("fade");
-	  $next.fadeIn(4000).addClass("fade");
-	},4000);
-  });

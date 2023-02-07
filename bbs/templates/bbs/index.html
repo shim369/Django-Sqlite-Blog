@@ -108,6 +108,20 @@ if ('serviceWorker' in navigator) {
 }
 </script>
 <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+window.addEventListener( 'load', function(){
+$(function(){
+	$(".p-hero__slideshow li").hide();
+	$(".p-hero__slideshow li:first").addClass("fade").show();
+	setInterval(function(){
+	let $active = $(".p-hero__slideshow li.fade");
+	let $next = $active.next("li").length?$active.next("li"):$(".p-hero__slideshow li:first");
+	$active.fadeOut(4000).removeClass("fade");
+	$next.fadeIn(4000).addClass("fade");
+	},4000);
+});
+}, false);
+</script>
 <script defer src="/static/js/main.js?{% now 'U' %}"></script>
 <script type="application/ld+json">[{"@context": "https://schema.org","@type": "SiteNavigationElement","hasPart": [{"@type": "WebPage","name": "HOME","url": "https://sohtani.pythonanywhere.com/"},{"@type": "CollectionPage","name": "PYTHON","url": "https://sohtani.pythonanywhere.com/category/python/"},{"@type": "CollectionPage","name": "TOOL","url": "https://sohtani.pythonanywhere.com/category/tool/"},{"@type": "WebPage","name": "FITNESS","url": "https://sohtani.pythonanywhere.com/fitness/"},{"@type": "ContactPage","name": "CONTACT","url": "https://sohtani.pythonanywhere.com/contact/"},{"@type": "WebPage","name": "GitHub","url": "https://github.com/shim369"}]}]</script>
 <script type="application/ld+json">{"@context": "https://schema.org","@type": "Blog","blogPost": [{"@type": "BlogPosting","headline": "WEB DEVELOPMENT AND LIFE BLOG","description": "TECH BLOG is a blog that publishes web development and a part of life.In web development, Python, Django, Figma are the main categories.","url": "https://sohtani.pythonanywhere.com/","mainEntityOfPage": {"@type":"WebPage","@id":"https://sohtani.pythonanywhere.com/"},"datePublished": "2022-11-04","image": {"@type": "ImageObject","url": "https://sohtani.pythonanywhere.com/media/logo.jpg","width": "254","height": "83"},"author": {"@type": "Person","name": "S Ohtani","url": "https://github.com/shim369"},"publisher": {"@type": "Organization","name": "TECH BLOG","logo":{"@type": "ImageObject","url": "https://sohtani.pythonanywhere.com/media/logo.jpg","width": "254","height": "83"}}}]}</script>
