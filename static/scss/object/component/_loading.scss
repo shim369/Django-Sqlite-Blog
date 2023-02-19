@@ -1,0 +1,35 @@
+.c-loading-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #161719;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 99999;
+	&__svg {
+		max-width: 100%;
+		width: 350px;
+		height: 350px;
+		path {
+			stroke: #dadada;
+			stroke-width: .5px;
+			stroke-dasharray: 1500px;
+			animation: draw 2.5s linear;
+		}
+	}
+}
+
+@keyframes draw {
+	0% {
+		stroke-dashoffset: 1500px;
+		fill: transparent;
+	}
+	100% {
+		stroke-dashoffset: 0px;
+		stroke: transparent;
+		fill: #dadada;
+	}
+}
