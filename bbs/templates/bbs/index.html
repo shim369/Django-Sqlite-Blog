@@ -75,13 +75,6 @@
 		</article>
 		{% include './include/l_aside.html' %}
 		</div>
-		<ol class="c-breadcrumbs">
-			<li class="c-breadcrumbs__item">
-			<a href="{% url 'bbs:index' %}">
-				<i class="icon-home3"></i>HOME
-			</a>
-			</li>
-		</ol>
 		</div>
 	</div>
 	{% include './include/l_author.html' %}
@@ -107,11 +100,25 @@
 <script>
 window.addEventListener( 'load', function(){
 const tl = gsap.timeline();
-tl.fromTo(".c-loading-wrapper",{ opacity: 1 },{ opacity: 0, display:"none", duration: 1.2, delay: 1.5 })
-.fromTo(".p-hero__slide-wrap", 1.2, { opacity: 0 }, { opacity: 1 })
-.fromTo(".p-hero__catch", .5, { opacity: 0, y: -50 },{ opacity: 1, y: 0 }, "-=1.2");
+tl.fromTo(".c-loading-wrapper",{ opacity: 1 },{ opacity: 0, display:"none", duration: 1, delay: 1.2 })
+.fromTo(".p-hero__slide-wrap", .8, { opacity: 0 }, { opacity: 1 })
+.fromTo(".p-hero__catch", .3, { opacity: 0, y: -50 },{ opacity: 1, y: 0 });
 }, false);
 </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+$(".p-hero__slideshow li").hide();
+$(".p-hero__slideshow li:first").addClass("fade").show();
+setInterval(function(){
+let $active = $(".p-hero__slideshow li.fade");
+let $next = $active.next("li").length?$active.next("li"):$(".p-hero__slideshow li:first");
+$active.fadeOut(3500).removeClass("fade");
+$next.fadeIn(3500).addClass("fade");
+},3500);
+</script>
+<script defer src="/static/js/main.js?{% now 'U' %}"></script>
+<script type="application/ld+json">[{"@context": "https://schema.org","@type": "SiteNavigationElement","hasPart": [{"@type": "WebPage","name": "HOME","url": "https://sohtani.pythonanywhere.com/"},{"@type": "CollectionPage","name": "PYTHON","url": "https://sohtani.pythonanywhere.com/category/python/"},{"@type": "CollectionPage","name": "TOOL","url": "https://sohtani.pythonanywhere.com/category/tool/"},{"@type": "WebPage","name": "FITNESS","url": "https://sohtani.pythonanywhere.com/fitness/"},{"@type": "ContactPage","name": "CONTACT","url": "https://sohtani.pythonanywhere.com/contact/"},{"@type": "WebPage","name": "GitHub","url": "https://github.com/shim369"}]}]</script>
+<script type="application/ld+json">{"@context": "https://schema.org","@type": "Blog","blogPost": [{"@type": "BlogPosting","headline": "WEB DEVELOPMENT AND LIFE BLOG","description": "TECH BLOG is a blog that publishes web development and a part of life.In web development, Python, Django, Figma are the main categories.","url": "https://sohtani.pythonanywhere.com/","mainEntityOfPage": {"@type":"WebPage","@id":"https://sohtani.pythonanywhere.com/"},"datePublished": "2022-11-04","image": {"@type": "ImageObject","url": "https://sohtani.pythonanywhere.com/media/logo.jpg","width": "254","height": "83"},"author": {"@type": "Person","name": "S Ohtani","url": "https://github.com/shim369"},"publisher": {"@type": "Organization","name": "TECH BLOG","logo":{"@type": "ImageObject","url": "https://sohtani.pythonanywhere.com/media/logo.jpg","width": "254","height": "83"}}}]}</script>
 <script>
 if ('serviceWorker' in navigator) {
 	window.addEventListener('load', function() {
@@ -122,25 +129,6 @@ if ('serviceWorker' in navigator) {
 	});
 }
 </script>
-<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script>
-window.addEventListener( 'load', function(){
-$(function(){
-	$(".p-hero__slideshow li").hide();
-	$(".p-hero__slideshow li:first").addClass("fade").show();
-	setInterval(function(){
-	let $active = $(".p-hero__slideshow li.fade");
-	let $next = $active.next("li").length?$active.next("li"):$(".p-hero__slideshow li:first");
-	$active.fadeOut(3000).removeClass("fade");
-	$next.fadeIn(3000).addClass("fade");
-	},3000);
-});
-}, false);
-</script>
-<script defer src="/static/js/main.js?{% now 'U' %}"></script>
-<script type="application/ld+json">[{"@context": "https://schema.org","@type": "SiteNavigationElement","hasPart": [{"@type": "WebPage","name": "HOME","url": "https://sohtani.pythonanywhere.com/"},{"@type": "CollectionPage","name": "PYTHON","url": "https://sohtani.pythonanywhere.com/category/python/"},{"@type": "CollectionPage","name": "TOOL","url": "https://sohtani.pythonanywhere.com/category/tool/"},{"@type": "WebPage","name": "FITNESS","url": "https://sohtani.pythonanywhere.com/fitness/"},{"@type": "ContactPage","name": "CONTACT","url": "https://sohtani.pythonanywhere.com/contact/"},{"@type": "WebPage","name": "GitHub","url": "https://github.com/shim369"}]}]</script>
-<script type="application/ld+json">{"@context": "https://schema.org","@type": "Blog","blogPost": [{"@type": "BlogPosting","headline": "WEB DEVELOPMENT AND LIFE BLOG","description": "TECH BLOG is a blog that publishes web development and a part of life.In web development, Python, Django, Figma are the main categories.","url": "https://sohtani.pythonanywhere.com/","mainEntityOfPage": {"@type":"WebPage","@id":"https://sohtani.pythonanywhere.com/"},"datePublished": "2022-11-04","image": {"@type": "ImageObject","url": "https://sohtani.pythonanywhere.com/media/logo.jpg","width": "254","height": "83"},"author": {"@type": "Person","name": "S Ohtani","url": "https://github.com/shim369"},"publisher": {"@type": "Organization","name": "TECH BLOG","logo":{"@type": "ImageObject","url": "https://sohtani.pythonanywhere.com/media/logo.jpg","width": "254","height": "83"}}}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org","@type": "BreadcrumbList","itemListElement": [{"@type": "ListItem","position": 1,"item": {"@id": "https://sohtani.pythonanywhere.com/","name": "home"}}]}</script>
 <!-- Google tag (gtag.js) -->
 <script defer src="https://www.googletagmanager.com/gtag/js?id=G-C4QW4L4G4R"></script>
 <script>
@@ -148,5 +136,6 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-C4QW4L4G4R');
-</script></body>
+</script>
+</body>
 </html>
