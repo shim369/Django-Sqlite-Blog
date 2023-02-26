@@ -20,8 +20,6 @@
 <meta name="twitter:url" content="https://sohtani.pythonanywhere.com/">
 <meta name="description" content="TECH BLOG is a blog that publishes web development and a part of life.In web development, Python, Django, Figma are the main categories.">
 <meta name="theme-color" content="#161719">
-<link rel="preconnect" href="https://ajax.googleapis.com">
-<link rel="dns-prefetch" href="https://ajax.googleapis.com">
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 <link rel="canonical" href="https://sohtani.pythonanywhere.com/">
@@ -98,23 +96,34 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js" integrity="sha512-f8mwTB+Bs8a5c46DEm7HQLcJuHMBaH/UFlcgyetMqqkvTcYg4g5VXsYR71b3qC82lZytjNYvBj2pf0VekA9/FQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-window.addEventListener( 'load', function(){
-const tl = gsap.timeline();
-tl.fromTo(".c-loading-wrapper",{ opacity: 1 },{ opacity: 0, display:"none", duration: 1, delay: 1.2 })
-.fromTo(".p-hero__slide-wrap", .8, { opacity: 0 }, { opacity: 1 })
-.fromTo(".p-hero__catch", .3, { opacity: 0, y: -50 },{ opacity: 1, y: 0 });
-}, false);
+window.addEventListener( 'load', () => {
+	const tl = gsap.timeline()
+	tl.fromTo(".c-loading-wrapper",{ opacity: 1 },{ opacity: 0, display:"none", duration: 1, delay: 1.2 })
+	.fromTo(".p-hero__slide-wrap", .8, { opacity: 0 }, { opacity: 1 })
+	.fromTo(".p-hero__catch", .3, { opacity: 0, y: -50 },{ opacity: 1, y: 0 })
+}, false)
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script>
-$(".p-hero__slideshow li").hide();
-$(".p-hero__slideshow li:first").addClass("fade").show();
-setInterval(function(){
-let $active = $(".p-hero__slideshow li.fade");
-let $next = $active.next("li").length?$active.next("li"):$(".p-hero__slideshow li:first");
-$active.fadeOut(3500).removeClass("fade");
-$next.fadeIn(3500).addClass("fade");
-},3500);
+let timer = 3500
+let imgLists = document.querySelectorAll('.p-hero__slideshow li')
+imgLists[0].classList.add('show')
+let imgNum = 0
+function showImg () {
+	for (let i = 0; i < imgLists.length; i++) {
+		imgLists[i].classList.remove('show')
+	}
+	if (imgNum >= imgLists.length - 1) {
+		imgNum = 0
+	} else {
+		imgNum++
+	}
+	imgLists[imgNum].classList.add('show')
+	slideTimer()
+}
+function slideTimer() {
+	setTimeout(showImg, timer)
+}
+slideTimer()
 </script>
 <script defer src="/static/js/main.js?{% now 'U' %}"></script>
 <script type="application/ld+json">[{"@context": "https://schema.org","@type": "SiteNavigationElement","hasPart": [{"@type": "WebPage","name": "HOME","url": "https://sohtani.pythonanywhere.com/"},{"@type": "CollectionPage","name": "PYTHON","url": "https://sohtani.pythonanywhere.com/category/python/"},{"@type": "CollectionPage","name": "TOOL","url": "https://sohtani.pythonanywhere.com/category/tool/"},{"@type": "WebPage","name": "FITNESS","url": "https://sohtani.pythonanywhere.com/fitness/"},{"@type": "ContactPage","name": "CONTACT","url": "https://sohtani.pythonanywhere.com/contact/"},{"@type": "WebPage","name": "GitHub","url": "https://github.com/shim369"}]}]</script>

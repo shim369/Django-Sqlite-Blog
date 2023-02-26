@@ -1,16 +1,14 @@
-$(function(){
-	let nav = $('.l-header__list');
-	nav.clone().appendTo('.l-header__menu');
-	let iconNav = $('.l-header__icons');
-	iconNav.clone().appendTo('.l-header__menu');
-});
+let menu = document.querySelector('.l-header__menu')
+let nav = document.querySelector('.l-header__list')
+let iconNav = document.querySelector('.l-header__icons')
+menu.appendChild(nav.cloneNode(true))
+menu.appendChild(iconNav.cloneNode(true))
 
-$(function(){
-	let $body = $('body');
-	$('.l-header__menu-btn').on('click', ()=>{
-		$body.toggleClass('side-open');
-	});
-	$('.l-header__menu').on('click', ()=>{
-		$body.removeClass('side-open');
-	});
-});
+let body = document.querySelector('body')
+let menuBtn = document.querySelector('.l-header__menu-btn')
+menuBtn.addEventListener('click', () => {
+	body.classList.toggle('side-open')
+})
+menu.addEventListener('click', () => {
+	body.classList.remove('side-open')
+})
