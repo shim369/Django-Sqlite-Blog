@@ -103,7 +103,7 @@ def chart_data(request):
 		plt.title('Weight Graph')
 		plt.xlabel('Date')
 		plt.ylabel('Weight')
-		plt.savefig('${IMG_PATH}weight.png')
+		plt.savefig(IMG_PATH + 'weight.png')
 
 	params = {
 		'bmi_form':BmiForm(),
