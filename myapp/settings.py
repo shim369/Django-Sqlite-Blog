@@ -12,6 +12,12 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+load_dotenv()
+GOOGLE_API_SSID = os.getenv("GOOGLE_API_SSID")
+GOOGLE_API_JSON = os.getenv("GOOGLE_API_JSON")
+IMG_PATH = os.getenv("IMG_PATH")
+
 from django.core.management.utils import get_random_secret_key
 SECRET_KEY = get_random_secret_key()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -22,16 +28,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-_n&#rp^g$pe1gm92_-9vob=6t!(fzr7%s^n3(!^^lg#vtyrc+l'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 
-ALLOWED_HOSTS = ['localhost', '.pythonanywhere.com', 'sohtani.pythonanywhere.com']
+ALLOWED_HOSTS = ['*', '.pythonanywhere.com', 'sohtani.pythonanywhere.com']
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = ''
@@ -152,7 +158,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 
 
-try:
-    from .local_settings import *
-except:
-    pass
+# try:
+#     from .local_settings import *
+# except:
+#     pass

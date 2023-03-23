@@ -1,7 +1,8 @@
-local_settings.py
 *.log
 *.pyc
 __pycache__/
 db-volumes/
 db.sqlite3
-media/
+.djangoenv
+.env
+static/json/sage-philosophy-372308-7341bc430ed0.json

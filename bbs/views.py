@@ -2,7 +2,12 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render,get_object_or_404
 from bbs.models import Category, Article, Tag
 from django.views.generic import TemplateView
-# from django.views.generic import DetailView
+import os
+from dotenv import load_dotenv
+load_dotenv()
+GOOGLE_API_SSID = os.getenv("GOOGLE_API_SSID")
+GOOGLE_API_JSON = os.getenv("GOOGLE_API_JSON")
+IMG_PATH = os.getenv("IMG_PATH")
 
 from django.shortcuts import render, redirect
 from .forms import ContactForm, BmiForm
@@ -10,8 +15,6 @@ from django.http import HttpResponse
 from django.conf import settings
 from django.core.mail import BadHeaderError, send_mail
 
-# import pandas as pd
-# import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt , pandas as pd
@@ -77,39 +80,37 @@ def contact_form(request):
 	return render(request, 'bbs/contact.html', {'form': form,'article':article,'entries': entries})
 
 
-import os
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 def chart_data(request):
 	article = Article.objects.order_by('-id')
 	entries = Article.objects.order_by('-id')[:3]
-	# scope = ['https://spreadsheets.google.com/feeds']
-	# ssid = '1ODQN3-YAnN-gyJeLyKD_dX0-m74_ul6qxHgCcUlcP30'
-	# path = os.path.expanduser('C:/Users/ohtan/python/myapp/static/json/xxx.json')
+	scope = ['https://spreadsheets.google.com/feeds']
+	path = os.path.expanduser(GOOGLE_API_JSON)
 
-	# credentials = ServiceAccountCredentials.from_json_keyfile_name(path, scope)
-	# gc = gspread.authorize(credentials)
-	# workbook   = gc.open_by_key(ssid)
-	# worksheet  = workbook.worksheet("weight")
-	# data = pd.DataFrame(worksheet.get_all_values()[1:], columns=worksheet.get_all_values()[0])
-	# pngDate = str(worksheet.col_values(1)[-1])
-	# pngDateTime = pngDate.replace('/', '-')
-	# with plt.style.context('Solarize_Light2'):
-	# plt.rcParams["figure.figsize"] = (10,5)
-	# plt.ylim(70, 84)
-	# plt.xticks(size='small')
-	# plt.plot(data['date'],data['weight'].astype('float'),marker = "o", color = "#4e3b2f")
-	# plt.title('Weight Graph')
-	# plt.xlabel('Date')
-	# plt.ylabel('Weight')
-	# 	plt.savefig('C:/Users/ohtan/python/myapp/media/weight.png')
+	credentials = ServiceAccountCredentials.from_json_keyfile_name(path, scope)
+	gc = gspread.authorize(credentials)
+	workbook   = gc.open_by_key(GOOGLE_API_SSID)
+	worksheet  = workbook.worksheet("weight")
+	data = pd.DataFrame(worksheet.get_all_values()[1:], columns=worksheet.get_all_values()[0])
+	pngDate = str(worksheet.col_values(1)[-1])
+	pngDateTime = pngDate.replace('/', '-')
+	with plt.style.context('Solarize_Light2'):
+		plt.rcParams["figure.figsize"] = (10,5)
+		plt.ylim(70, 84)
+		plt.xticks(size='small')
+		plt.plot(data['date'],data['weight'].astype('float'),marker = "o", color = "#4e3b2f")
+		plt.title('Weight Graph')
+		plt.xlabel('Date')
+		plt.ylabel('Weight')
+		plt.savefig('${IMG_PATH}weight.png')
 
 	params = {
 		'bmi_form':BmiForm(),
 		'article':article,
 		'entries': entries,
-		# 'pngDate': pngDate,
-		# 'pngDateTime': pngDateTime,
+		'pngDate': pngDate,
+		'pngDateTime': pngDateTime,
 	}
 	if (request.method == 'POST'):
 		height = float(request.POST['height'])
