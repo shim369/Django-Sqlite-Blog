@@ -10,7 +10,6 @@ urlpatterns = [
 	path('',views.index, name='index'),
     path('contact/', views.contact_form, name='contact_form'),
     path('contact/complete/', views.complete, name='complete'),
-    path('fitness/', views.chart_data, name='chart_data'),
 	path('<slug:slug>/',views.detail, name='detail'),
 	path('category/<str:category>/',views.category, name='category'),
 	path('tag/<str:tag>/',views.tag, name='tag'),

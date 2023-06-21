@@ -74,6 +74,28 @@ gtag('config', 'G-C4QW4L4G4R');
             {% autoescape off %}
             <div>{{ article.content | safe }}</div>
             {% endautoescape %}
+
+            {% if article.slug == "fitness" %}
+              <h2>BMI（Body Mass Index） by WHO</h2>
+              <p>Compare BMI results with the BMI table for adults published by WHO.</p>
+              <p>It is used for both men and women, age 20 or older.</p>
+              <p>As you measure with BMI Calculator, the table will be colored according to your BMI result.</p>
+              <p>Enter your height and weight and press the SEND BUTTON to measure your BMI.</p>
+              <table class="p-article__table__bmi1">
+                <tr><th colspan="2">BMI Calculator</th></tr>
+                <tr>
+                  <td><label>Height(cm)<br><input id="height" type="number" class="p-article__table__bmi1__input" step="1"></label></td>
+                  <td><label>Weight(kg)<br><input id="weight" type="number" class="p-article__table__bmi1__input" step="0.1"></label></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><button id="calculate-bmi" type="submit" class="c-button__submit">SEND</button></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><div class="bmi-result">BMI = <span id="bmi-result"></span></div></td>
+                </tr>
+                </table>
+                <div id="bmi-table"></div>
+            {% endif %}
           </div>
 		</div>
     </article>
@@ -101,6 +123,7 @@ gtag('config', 'G-C4QW4L4G4R');
 {% include './include/l_footer.html' %}
 </div>
 <script defer src="/static/js/main.js?{% now 'U' %}"></script>
+<script defer src="/static/js/bmi.js?{% now 'U' %}"></script>
 <script type="application/ld+json">[{"@context": "https://schema.org","@type": "SiteNavigationElement","hasPart": [{"@type": "WebPage","name": "HOME","url": "https://sohtani.pythonanywhere.com/"},{"@type": "CollectionPage","name": "PYTHON","url": "https://sohtani.pythonanywhere.com/category/python/"},{"@type": "CollectionPage","name": "TOOL","url": "https://sohtani.pythonanywhere.com/category/tool/"},{"@type": "WebPage","name": "FITNESS","url": "https://sohtani.pythonanywhere.com/fitness/"},{"@type": "ContactPage","name": "CONTACT","url": "https://sohtani.pythonanywhere.com/contact/"},{"@type": "WebPage","name": "GitHub","url": "https://github.com/shim369"}]}]</script>
 <script type="application/ld+json">{"@context": "https://schema.org","@type": "Blog","blogPost": [{"@type": "BlogPosting","headline": "{{ article.title }}","description": "{{ article.description }}","url": "https://sohtani.pythonanywhere.com{% url 'bbs:detail' article.slug %}","mainEntityOfPage": {"@type":"WebPage","@id":"https://sohtani.pythonanywhere.com{% url 'bbs:detail' article.slug %}"},"datePublished": "{{ article.created_at|date:'Y-m-d' }}","dateModified": "{{ article.updated_at|date:'Y-m-d' }}","image": {"@type": "ImageObject","url": "https://sohtani.pythonanywhere.com/media/{{ article.thumbnail_image_name }}.jpg","width": "868","height": "400"},"author": {"@type": "Person","name": "S Ohtani","url": "https://github.com/shim369"},"publisher": {"@type": "Organization","name": "TECH BLOG","logo":{"@type": "ImageObject","url": "https://sohtani.pythonanywhere.com/media/logo.jpg","width": "254","height": "83"}},"articleBody": "{{ article.article_body }}"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org","@type": "BreadcrumbList","itemListElement": [{"@type": "ListItem","position": 1,"item": {"@id": "https://sohtani.pythonanywhere.com/","name": "home"}},{"@type": "ListItem","position": 2,"item": {"@id": "https://sohtani.pythonanywhere.com/category/{{ article.category.name }}/","name": "{{ article.category.name }}"}},{"@type": "ListItem","position": 3,"item": {"@id": "https://sohtani.pythonanywhere.com{% url 'bbs:detail' article.slug %}","name": "{{ article.title }}"}}]}</script>
