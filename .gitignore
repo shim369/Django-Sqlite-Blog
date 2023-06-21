@@ -7,3 +7,4 @@ db.sqlite3
 .env
 .DS_Store
 static/json/sage-philosophy-372308-7341bc430ed0.json
+myenv/
