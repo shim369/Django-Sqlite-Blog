@@ -10,7 +10,7 @@ GOOGLE_API_JSON = os.getenv("GOOGLE_API_JSON")
 IMG_PATH = os.getenv("IMG_PATH")
 
 from django.shortcuts import render, redirect
-from .forms import ContactForm, BmiForm
+from .forms import ContactForm
 from django.http import HttpResponse
 from django.conf import settings
 from django.core.mail import BadHeaderError, send_mail
@@ -83,8 +83,6 @@ def contact_form(request):
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 def chart_data(request):
-	# article = Article.objects.order_by('-id')
-	# entries = Article.objects.order_by('-id')[:3]
 	scope = ['https://spreadsheets.google.com/feeds']
 	path = os.path.expanduser(GOOGLE_API_JSON)
 
@@ -93,8 +91,7 @@ def chart_data(request):
 	workbook   = gc.open_by_key(GOOGLE_API_SSID)
 	worksheet  = workbook.worksheet("weight")
 	data = pd.DataFrame(worksheet.get_all_values()[1:], columns=worksheet.get_all_values()[0])
-	# pngDate = str(worksheet.col_values(1)[-1])
-	# pngDateTime = pngDate.replace('/', '-')
+
 	with plt.style.context('Solarize_Light2'):
 		plt.rcParams["figure.figsize"] = (10,5)
 		plt.ylim(70, 84)
@@ -104,17 +101,3 @@ def chart_data(request):
 		plt.xlabel('Date')
 		plt.ylabel('Weight')
 		plt.savefig(IMG_PATH + 'weight.png')
-
-	# params = {
-	# 	'bmi_form': BmiForm(),
-	# 	'article': article,
-	# 	'entries': entries,
-	# 	'pngDate': pngDate,
-	# 	'pngDateTime': pngDateTime,
-	# }
-	# if (request.method == 'POST'):
-	# 	height = float(request.POST['height'])
-	# 	weight = float(request.POST['weight'])
-
-	# 	params['bmi'] = round(weight / ((height/100) * (height/100)), 2)
-	# return render(request, 'bbs/fitness.html',params)
