@@ -71,10 +71,6 @@ gtag('config', 'G-C4QW4L4G4R');
               </picture>
           </figure>
           <div class="p-article__body">
-            {% autoescape off %}
-            <div>{{ article.content | safe }}</div>
-            {% endautoescape %}
-
             {% if article.slug == "fitness" %}
               <h2>BMI（Body Mass Index） by WHO</h2>
               <p>Compare BMI results with the BMI table for adults published by WHO.</p>
@@ -96,6 +92,9 @@ gtag('config', 'G-C4QW4L4G4R');
                 </table>
                 <div id="bmi-table"></div>
             {% endif %}
+            {% autoescape off %}
+            <div>{{ article.content | safe }}</div>
+            {% endautoescape %}
           </div>
 		</div>
     </article>
