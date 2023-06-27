@@ -46,11 +46,44 @@ def tag(request, tag):
 	articles = Article.objects.order_by('-id').filter(tag=tag)
 	page_obj = paginate_queryset(request, articles, 6)
 	return render(request, 'bbs/list.html',{'tag': tag, 'articles': page_obj.object_list,'page_obj': page_obj })
-  
+
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+
 def detail(request, slug):
-	entries = Article.objects.order_by('-id')[:3]
-	article = get_object_or_404(Article, slug=slug)
-	return render(request,'bbs/detail.html',{'article': article,'entries': entries})
+    entries = Article.objects.order_by('-id')[:3]
+    article = get_object_or_404(Article, slug=slug)
+
+    scope = ['https://spreadsheets.google.com/feeds']
+    path = os.path.expanduser(GOOGLE_API_JSON)
+
+    credentials = ServiceAccountCredentials.from_json_keyfile_name(path, scope)
+    gc = gspread.authorize(credentials)
+    workbook   = gc.open_by_key(GOOGLE_API_SSID)
+    worksheet  = workbook.worksheet("weight")
+    data = pd.DataFrame(worksheet.get_all_values()[1:], columns=worksheet.get_all_values()[0])
+    pngDate = str(worksheet.col_values(1)[-1])
+    pngDateTime = pngDate.replace('/', '-')
+
+    with plt.style.context('Solarize_Light2'):
+        plt.rcParams["figure.figsize"] = (10,5)
+        plt.ylim(70, 84)
+        plt.xticks(size='small')
+        plt.plot(data['date'],data['weight'].astype('float'),marker = "o", color = "#4e3b2f")
+        plt.title('Weight Graph')
+        plt.xlabel('Date')
+        plt.ylabel('Weight')
+        plt.savefig(IMG_PATH + 'weight.png')
+
+    params = {
+        'article': article,
+        'entries': entries,
+        'pngDate': pngDate,
+        'pngDateTime': pngDateTime,
+    }
+
+    return render(request,'bbs/detail.html', params)
+
 
 def complete(request):
 	entries = Article.objects.order_by('-id')[:3]
@@ -80,24 +113,3 @@ def contact_form(request):
 	return render(request, 'bbs/contact.html', {'form': form,'article':article,'entries': entries})
 
 
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
-def chart_data(request):
-	scope = ['https://spreadsheets.google.com/feeds']
-	path = os.path.expanduser(GOOGLE_API_JSON)
-
-	credentials = ServiceAccountCredentials.from_json_keyfile_name(path, scope)
-	gc = gspread.authorize(credentials)
-	workbook   = gc.open_by_key(GOOGLE_API_SSID)
-	worksheet  = workbook.worksheet("weight")
-	data = pd.DataFrame(worksheet.get_all_values()[1:], columns=worksheet.get_all_values()[0])
-
-	with plt.style.context('Solarize_Light2'):
-		plt.rcParams["figure.figsize"] = (10,5)
-		plt.ylim(70, 84)
-		plt.xticks(size='small')
-		plt.plot(data['date'],data['weight'].astype('float'),marker = "o", color = "#4e3b2f")
-		plt.title('Weight Graph')
-		plt.xlabel('Date')
-		plt.ylabel('Weight')
-		plt.savefig(IMG_PATH + 'weight.png')
