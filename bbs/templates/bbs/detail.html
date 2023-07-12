@@ -61,7 +61,8 @@ gtag('config', 'G-C4QW4L4G4R');
             <h1 class="p-article__title">{{ article.title }}</h1>
             <p class="p-article__date">
               <time class="p-article__time" datetime="{{ article.created_at|date:'Y-m-d' }}"><i class="icon-clock2"></i>{{ article.created_at|date:"Y/m/d" }}</time>
-              <time class="p-article__time" datetime="{{ article.updated_at|date:'Y-m-d' }}"><i class="icon-spinner11"></i>{{ article.updated_at|date:'Y/m/d' }}</time>
+              <!-- <time class="p-article__time" datetime="{{ article.updated_at|date:'Y-m-d' }}"><i class="icon-spinner11"></i>{{ article.updated_at|date:'Y/m/d' }}</time> -->
+              <time class="p-article__time" datetime="{{ latest_date|date:'Y-m-d' }}"><i class="icon-spinner11"></i>{{ latest_date|date:'Y/m/d' }}</time>
             </p>
           </div>
           <figure class="p-article__thumbnail">

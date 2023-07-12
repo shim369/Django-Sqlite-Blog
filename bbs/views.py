@@ -49,6 +49,7 @@ def tag(request, tag):
 
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+from datetime import datetime
 
 def detail(request, slug):
     entries = Article.objects.order_by('-id')[:3]
@@ -63,8 +64,15 @@ def detail(request, slug):
     worksheet  = workbook.worksheet("weight")
     data = pd.DataFrame(worksheet.get_all_values()[1:], columns=worksheet.get_all_values()[0])
     pngDate = str(worksheet.col_values(1)[-1])
-    pngDateTime = pngDate.replace('/', '-')
 
+    article_updated_at = article.updated_at
+    weight_png_date = datetime.strptime(pngDate, '%Y/%m/%d').date()
+
+    if article_updated_at > weight_png_date:
+        latest_date = article_updated_at
+    else:
+        latest_date = weight_png_date
+	
     with plt.style.context('Solarize_Light2'):
         plt.rcParams["figure.figsize"] = (10,5)
         plt.ylim(70, 84)
@@ -79,7 +87,7 @@ def detail(request, slug):
         'article': article,
         'entries': entries,
         'pngDate': pngDate,
-        'pngDateTime': pngDateTime,
+        'latest_date': latest_date,
     }
 
     return render(request,'bbs/detail.html', params)
