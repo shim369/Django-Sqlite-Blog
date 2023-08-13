@@ -52,45 +52,48 @@ from oauth2client.service_account import ServiceAccountCredentials
 from datetime import datetime
 
 def detail(request, slug):
-    entries = Article.objects.order_by('-id')[:3]
-    article = get_object_or_404(Article, slug=slug)
+	entries = Article.objects.order_by('-id')[:3]
+	article = get_object_or_404(Article, slug=slug)
 
-    scope = ['https://spreadsheets.google.com/feeds']
-    path = os.path.expanduser(GOOGLE_API_JSON)
+	scope = ['https://spreadsheets.google.com/feeds']
+	path = os.path.expanduser(GOOGLE_API_JSON)
 
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(path, scope)
-    gc = gspread.authorize(credentials)
-    workbook   = gc.open_by_key(GOOGLE_API_SSID)
-    worksheet  = workbook.worksheet("weight")
-    data = pd.DataFrame(worksheet.get_all_values()[1:], columns=worksheet.get_all_values()[0])
-    pngDate = str(worksheet.col_values(1)[-1])
+	credentials = ServiceAccountCredentials.from_json_keyfile_name(path, scope)
+	gc = gspread.authorize(credentials)
+	workbook   = gc.open_by_key(GOOGLE_API_SSID)
+	worksheet  = workbook.worksheet("weight")
+	data = pd.DataFrame(worksheet.get_all_values()[1:], columns=worksheet.get_all_values()[0])
+	pngDate = str(worksheet.col_values(1)[-1])
 
-    article_updated_at = article.updated_at
-    weight_png_date = datetime.strptime(pngDate, '%Y/%m/%d').date()
+	article_updated_at = article.updated_at
 
-    if article_updated_at > weight_png_date:
-        latest_date = article_updated_at
-    else:
-        latest_date = weight_png_date
+	current_year = datetime.now().year
+	formatted_date = f"{current_year}/{pngDate}"
+	weight_png_date = datetime.strptime(formatted_date, '%Y/%m/%d').date()
+
+	if article_updated_at > weight_png_date:
+		latest_date = article_updated_at
+	else:
+		latest_date = weight_png_date
 	
-    with plt.style.context('Solarize_Light2'):
-        plt.rcParams["figure.figsize"] = (10,5)
-        plt.ylim(70, 84)
-        plt.xticks(size='small')
-        plt.plot(data['date'],data['weight'].astype('float'),marker = "o", color = "#4e3b2f")
-        plt.title('Weight Graph')
-        plt.xlabel('Date')
-        plt.ylabel('Weight')
-        plt.savefig(IMG_PATH + 'weight.png')
+	with plt.style.context('Solarize_Light2'):
+		plt.rcParams["figure.figsize"] = (10,5)
+		plt.ylim(70, 84)
+		plt.xticks(size='small')
+		plt.plot(data['date'],data['weight'].astype('float'),marker = "o", color = "#4e3b2f")
+		plt.title('Weight Graph')
+		plt.xlabel('Date')
+		plt.ylabel('Weight')
+		plt.savefig(IMG_PATH + 'weight.png')
 
-    params = {
-        'article': article,
-        'entries': entries,
-        'pngDate': pngDate,
-        'latest_date': latest_date,
-    }
+	params = {
+		'article': article,
+		'entries': entries,
+		'pngDate': pngDate,
+		'latest_date': latest_date,
+	}
 
-    return render(request,'bbs/detail.html', params)
+	return render(request,'bbs/detail.html', params)
 
 
 def complete(request):
