@@ -76,11 +76,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
 
             if (bmi >= min && bmi < max) {
-                rows[i].style.backgroundColor = 'lightgray';
+                rows[i].style.backgroundColor = '#edcaff';
             } else if (bmi >= 40 && rows[i].cells[0].innerText.includes('Obese class3')) {
-                rows[i].style.backgroundColor = 'lightgray';
+                rows[i].style.backgroundColor = '#edcaff';
             } else if (bmi <= 15.99 && rows[i].cells[0].innerText.includes('Severe thinness')) {
-                rows[i].style.backgroundColor = 'lightgray';
+                rows[i].style.backgroundColor = '#edcaff';
             } else {
                 rows[i].style.backgroundColor = '';
             }
