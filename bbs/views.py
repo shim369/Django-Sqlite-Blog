@@ -71,11 +71,14 @@ def detail(request, slug):
 	formatted_date = f"{current_year}/{pngDate}"
 	weight_png_date = datetime.strptime(formatted_date, '%Y/%m/%d').date()
 
-	if article_updated_at > weight_png_date:
-		latest_date = article_updated_at
+	if article.slug == "fitness":
+		if article_updated_at > weight_png_date:
+			latest_date = article_updated_at
+		else:
+			latest_date = weight_png_date
 	else:
-		latest_date = weight_png_date
-	
+		latest_date = article_updated_at
+
 	with plt.style.context('Solarize_Light2'):
 		plt.rcParams["figure.figsize"] = (10,5)
 		plt.ylim(70, 84)
